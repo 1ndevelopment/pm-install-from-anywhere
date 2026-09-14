@@ -1,7 +1,7 @@
 id=pm-install-from-anywhere
 name="pm install" from anywhere
-version=v0.1
-versionCode=1
+version=v0.2
+versionCode=2
 author=1ndev & Kartatz
 description=Allow the 'pm' CLI utility to install APKs from anywhere.
 support=https://github.com/1ndevelopment/pm-install-from-anywhere

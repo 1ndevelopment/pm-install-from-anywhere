@@ -2,7 +2,7 @@
 
 Allow the `pm` CLI utility to install APKs from anywhere in your filesystem.
 
-This is done by modifying the SELinux policy to allow system processes running under the user `system_server` to read APK files from `fuse` and `sdcardfs` filesystems.
+This is done by modifying the SELinux policy to allow system processes running under the user `system_server` to read APK files from `fuse` and `sdcardfs` filesystems, as well as from app private data directories (`app_data_file`, e.g. Termux's home under `/data/data/com.termux`).
 
 ## Requirements
 

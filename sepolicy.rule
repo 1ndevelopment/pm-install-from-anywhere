@@ -1,2 +1,9 @@
-allow system_server fuse file { getattr read map };
-allow system_server sdcardfs file { getattr read map };
+allow system_server fuse file { getattr open read map };
+allow system_server sdcardfs file { getattr open read map };
+# Termux / app private dirs (/data/data/com.termux, /data/user/0/com.termux, ... are app_data_file).
+# Stock policy only lets system_server use already-open FDs ({ getattr read write }, no open/map,
+# plus a neverallow on open), so `pm install <path-in-termux-home>` is denied when
+# system_server opens/mmaps the APK directly. Allow it, mirroring the fuse/sdcardfs rules above.
+allow system_server app_data_file file { getattr open read map };
+allow system_server app_data_file dir { getattr open read search };
+allow system_server app_data_file lnk_file { getattr read };
