@@ -1,0 +1,25 @@
+# "pm Install" from anywhere
+
+Allow the `pm` CLI utility to install APKs from anywhere in your filesystem.
+
+This is done by modifying the SELinux policy to allow system processes running under the user `system_server` to read APK files from `fuse` and `sdcardfs` filesystems.
+
+## Requirements
+
+* [KernelSU](https://kernelsu.org/) (or Magisk - the module is compatible with both; the SELinux rules are applied via `sepolicy.rule` in either case).
+
+## Background
+
+At some point between the release of Android 8 and 9, Google changed the way the `pm install` utility handles APK installation. Before that change, you could install APKs from anywhere in your filesystem, but now you are required to provide an APK from a "trusted location" like `/data/local/tmp` to be able to install it.
+
+This is annoying because it makes you run additional commands or take extra actions (e.g., copy, move, change file permissions) to move or copy the APK to a trusted location before actually installing it.
+
+### References
+
+* [Install APK using root, handling new limitations of "/data/local/tmp/" folder](https://stackoverflow.com/questions/50540334)
+* [Bug: can't install APK files using "pm install" via device](https://issuetracker.google.com/issues/80270303)
+* [Module Forked from Faina](https://github.com/Magisk-Modules-Alt-Repo/faina)
+
+## Supported Android versions
+
+This module was only tested on Android 14, but in theory, it should work on any Android version starting from Android Oreo.
